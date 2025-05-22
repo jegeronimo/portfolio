@@ -834,3 +834,45 @@ section#portfolio .btn-outline.active {
     color: #fff;
     background: #{{ site.color.secondary }};
 }
+
+/* Contact Section Button Styling */
+section#contact .btn-outline {
+    border: solid 2px #{{ site.color.secondary }};
+    color: #{{ site.color.secondary }};
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 15px 30px;
+    width: 80%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: inline-block;
+}
+
+section#contact .btn-outline i {
+    font-size: 1.1em;
+    margin-right: 8px;
+}
+
+section#contact .btn-outline:hover,
+section#contact .btn-outline:focus,
+section#contact .btn-outline:active,
+section#contact .btn-outline.active {
+    border: solid 2px #{{ site.color.secondary }};
+    color: #fff;
+    background: #{{ site.color.secondary }};
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+section#contact h2 {
+    color: #{{ site.color.secondary-dark }};
+}
+
+section#contact hr.star-primary {
+    border-color: #{{ site.color.secondary }};
+}
+
+section#contact hr.star-primary:after {
+    color: #{{ site.color.secondary }};
+    background-color: #fff;
+}
