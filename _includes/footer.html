@@ -3,29 +3,29 @@
   <div class="footer-above">
     <div class="container">
       <div class="row">
+
         <div class="footer-col col-md-4">
-          <h3>{{ site.footer.location }}</h3>
-          <p>
-            {% for adress in site.address %}
-            {{ adress.line }} <br>
-            {% endfor %}
-          </p>
+          <h3>{{ site.footer.quote }}</h3>
+          <p style="white-space: pre-line;">{{ site.quote }}</p>
         </div>
+
         <div class="footer-col col-md-4">
           <h3>{{ site.footer.social }}</h3>
           <ul class="list-inline">
             {% for network in site.social %}
             <li>
-              <a href="{{ network.url }}" class="btn-social btn-outline"><i
+              <a href="{{ network.url }}" class="btn-social btn-outline" target="_blank"><i
                   class="fa-brands fa-fw fa-{{ network.title }}"></i></a>
             </li>
             {% endfor %}
           </ul>
         </div>
+
         <div class="footer-col col-md-4">
           <h3>{{ site.footer.credits }}</h3>
           <p>{{ site.credits }}</p>
         </div>
+
       </div>
     </div>
   </div>

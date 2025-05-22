@@ -24,3 +24,41 @@
 <!-- Disqus Stuff -->
 {% include js_disqus.html %}
 {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var navbar = document.querySelector('.navbar-fixed-top');
+  var navLinks = document.querySelectorAll('.navbar-nav li a');
+  var sections = document.querySelectorAll('section');
+
+  function onScroll() {
+    var navbarRect = navbar.getBoundingClientRect();
+    var navbarBottom = navbarRect.bottom + window.scrollY;
+
+    var currentSectionId = null;
+    sections.forEach(function(section) {
+      var sectionTop = section.offsetTop;
+      var sectionBottom = sectionTop + section.offsetHeight;
+      if (navbarBottom >= sectionTop && navbarBottom < sectionBottom) {
+        currentSectionId = section.id;
+      }
+    });
+
+    navLinks.forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        var sectionId = href.slice(1);
+        if (sectionId === currentSectionId) {
+          link.parentElement.classList.add('active');
+        } else {
+          link.parentElement.classList.remove('active');
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll);
+  window.addEventListener('resize', onScroll);
+  onScroll();
+});
+</script>

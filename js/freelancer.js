@@ -8,8 +8,9 @@
 $(function() {
     $('.page-scroll a').bind('click', function(event) {
         var $anchor = $(this);
+        var headerHeight = $('.navbar-fixed-top').outerHeight();
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+            scrollTop: $($anchor.attr('href')).offset().top - headerHeight
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
@@ -27,9 +28,20 @@ $(function() {
 });
 
 // Highlight the top nav as scrolling occurs
-$('body').scrollspy({
-    target: '.navbar-fixed-top'
-})
+$(function() {
+    var $body = $('body');
+    var $navbar = $('.navbar-fixed-top');
+    function setScrollSpy() {
+        var headerHeight = $navbar.outerHeight();
+        $body.scrollspy('dispose');
+        $body.scrollspy({
+            target: '.navbar-fixed-top',
+            offset: headerHeight
+        });
+    }
+    setScrollSpy();
+    $(window).on('resize', setScrollSpy);
+});
 
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
