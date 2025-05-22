@@ -1,10 +1,10 @@
 # Site settings
 title: James Geronimo
-email: your-email@domain.com
-url: https://github.com/jeromelachaud/freelancer-theme
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
-keywords: "your keywords, separated by commas"
-skills: "Data Scientist   ·   Educator    ·   Student"
+email: jegeronimo@berkeley.edu
+url: https://github.com/jegeronimo/jegeronimo.github.io
+description: "I'm James, an undergraduate at UC Berkeley studying Computer Science and Data Science. I'm passionate about using technology to make data driven decisions."
+keywords: "data science, computer science, machine learning, artificial intelligence, education, biotechnology, business, entrepreneurship"
+skills: "Data Scientist · Educator · Student"
 meta_author: James Geronimo
 
 # Google webmaster tools
