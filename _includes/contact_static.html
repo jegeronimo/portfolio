@@ -7,20 +7,19 @@
         <hr class="star-primary">
       </div>
     </div>
-    <div class="row">
-      <!-- Profile Picture Column -->
-      <div class="col-md-4 col-md-offset-1 text-center">
-        <img src="img/profile/profile-alt.jpg" alt="James Geronimo" class="img-responsive contact-profile" style="max-width: 300px; margin: 0 auto; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    <div class="row contact-flex" style="max-width: 700px; margin: 0 auto;">
+      <div class="contact-img-col" style="max-width: 340px; width: 100%; text-align: center;">
+        <div class="profile-img-container" style="display: inline-block;">
+          <img id="contact-profile-img" src="img/profile/profile-alt.jpg" alt="James Geronimo" class="img-responsive contact-profile" style="max-width: 300px; margin: 0 auto 30px auto; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        </div>
       </div>
-      
-      <!-- Contact Buttons Column -->
-      <div class="col-md-6 text-center" style="display: flex; flex-direction: column; justify-content: center; min-height: 300px;">
+      <div class="contact-btns-col" style="max-width: 370px; width: 100%; text-align: center;">
         <h3 style="margin-bottom: 30px;">Let's Connect!</h3>
         <div class="contact-buttons">
-          <a href="mailto:{{ site.email }}" class="btn btn-lg btn-outline">
+          <a href="mailto:{{ site.email }}" class="btn btn-lg btn-outline contact-btn-flex">
             <i class="fas fa-envelope fa-fw"></i> Email Me
           </a>
-          <a href="{{ site.social[0].url }}" class="btn btn-lg btn-outline" target="_blank" rel="noopener noreferrer">
+          <a href="{{ site.social[0].url }}" class="btn btn-lg btn-outline contact-btn-flex" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin fa-fw"></i> Connect on LinkedIn
           </a>
         </div>
@@ -32,21 +31,94 @@
 <style>
 .contact-profile {
   transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.contact-profile:hover {
-  transform: scale(1.02);
+.contact-profile.flipped {
+  transform: scaleX(-1);
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
-@media (max-width: 768px) {
+.profile-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+}
+
+.contact-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-img-col, .contact-btns-col {
+  padding: 0;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn.btn-outline.contact-btn-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 300px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.btn.btn-outline.contact-btn-flex i {
+  margin-right: 10px;
+}
+
+@media (max-width: 900px) {
+  .contact-flex {
+    flex-direction: column;
+    gap: 0;
+    max-width: 100%;
+  }
+  .contact-img-col, .contact-btns-col {
+    width: 100%;
+    max-width: 100%;
+  }
   .contact-profile {
     max-width: 200px !important;
     margin-bottom: 30px !important;
   }
-  
   .contact-buttons {
     margin-top: 20px;
   }
+  .contact-btns-col {
+    margin-left: 0 !important;
+  }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var container = document.querySelectorAll('.profile-img-container');
+  var img = document.getElementById('contact-profile-img');
+  if (container.length && img) {
+    container.forEach(function(cont) {
+      cont.addEventListener('mouseenter', function() {
+        img.classList.add('flipped');
+      });
+      cont.addEventListener('mouseleave', function() {
+        img.classList.remove('flipped');
+      });
+    });
+  }
+});
+</script>
