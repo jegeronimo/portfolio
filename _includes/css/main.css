@@ -806,15 +806,30 @@ section#about h2 {
   background: #fff;
   overflow: hidden;
 }
+
+/* Default background for About section */
 .section-bg::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: url('img/berkeley.png') center center/cover no-repeat;
+  background: url('img/background/berkeley.png') center center/cover no-repeat;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
 }
+
+/* Portfolio section specific background */
+section#portfolio.section-bg::before {
+  background: url('img/background/goldgym.jpg') center center/cover no-repeat;
+  opacity: 0.15;
+}
+
+/* Contact section specific background */
+section#contact.section-bg::before {
+  background: url('img/background/soda.jpg') center center/cover no-repeat;
+  opacity: 0.15;
+}
+
 .section-bg > * {
   position: relative;
   z-index: 1;
