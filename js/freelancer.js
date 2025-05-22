@@ -27,22 +27,6 @@ $(function() {
     });
 });
 
-// Highlight the top nav as scrolling occurs
-$(function() {
-    var $body = $('body');
-    var $navbar = $('.navbar-fixed-top');
-    function setScrollSpy() {
-        var headerHeight = $navbar.outerHeight();
-        $body.scrollspy('dispose');
-        $body.scrollspy({
-            target: '.navbar-fixed-top',
-            offset: headerHeight
-        });
-    }
-    setScrollSpy();
-    $(window).on('resize', setScrollSpy);
-});
-
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
