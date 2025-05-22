@@ -2,17 +2,14 @@
 import * as ChriscoursesPerlinNoise from "https://esm.sh/@chriscourses/perlin-noise";
 
 // Editable values
-let showFPS = false; // Disabled for production
-let MAX_FPS = 0; // 0 = uncapped
-let thresholdIncrement = 5;
-let thickLineThresholdMultiple = 3;
-let res = 8;
-let baseZOffset = 0.00035;
-let lineColor = '#{{ site.color.secondary }}20'; // Using secondary color with 12% opacity
+const thresholdIncrement = 5;
+const thickLineThresholdMultiple = 3;
+const res = 10;
+const baseZOffset = 0.00035;
+const lineColor = '#{{ site.color.secondary }}20'; // Using secondary color with 12% opacity
 
 let canvas;
 let ctx;
-let frameValues = [];
 let inputValues = [];
 
 let currentThreshold = 0;
@@ -23,8 +20,8 @@ let zBoostValues = [];
 let noiseMin = 100;
 let noiseMax = 0;
 
-let mousePos = { x: -99, y: -99 };
-let mouseDown = false;
+let lastFrameTime = 0;
+const targetFPS = 30;
 
 function initTopography() {
     setupCanvas();
@@ -42,21 +39,6 @@ function setupCanvas() {
 
     canvasSize();
     window.addEventListener('resize', canvasSize);
-
-    canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mousePos = {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-        };
-    });
-
-    canvas.addEventListener('mousedown', () => mouseDown = true);
-    canvas.addEventListener('mouseup', () => mouseDown = false);
-    canvas.addEventListener('mouseleave', () => {
-        mouseDown = false;
-        mousePos = { x: -99, y: -99 };
-    });
 }
 
 function canvasSize() {
@@ -70,19 +52,36 @@ function canvasSize() {
     cols = Math.floor(canvas.width / res) + 1;
     rows = Math.floor(canvas.height / res) + 1;
     
-    // Initialize zBoostValues
-    zBoostValues = Array(rows).fill().map(() => Array(cols).fill(0));
+    // Reuse or reinitialize inputValues and zBoostValues
+    if (!Array.isArray(inputValues) || inputValues.length !== rows) {
+        inputValues = Array.from({ length: rows }, () => Array(cols + 1).fill(0));
+    } else {
+        for (let y = 0; y < rows; y++) {
+            if (!Array.isArray(inputValues[y]) || inputValues[y].length !== cols + 1) {
+                inputValues[y] = Array(cols + 1).fill(0);
+            }
+        }
+    }
+    if (!Array.isArray(zBoostValues) || zBoostValues.length !== rows) {
+        zBoostValues = Array.from({ length: rows }, () => Array(cols).fill(0));
+    } else {
+        for (let y = 0; y < rows; y++) {
+            if (!Array.isArray(zBoostValues[y]) || zBoostValues[y].length !== cols) {
+                zBoostValues[y] = Array(cols).fill(0);
+            }
+        }
+    }
 }
 
-function animate() {
+function animate(now) {
+    if (now - lastFrameTime < 1000 / targetFPS) {
+        requestAnimationFrame(animate);
+        return;
+    }
+    lastFrameTime = now;
     const startTime = performance.now();
     
-    if (mouseDown) {
-        mouseOffset();
-    }
-    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
     zOffset += baseZOffset;
     generateNoise();
     
@@ -100,30 +99,8 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Rest of the functions remain the same as in the original code
-function mouseOffset() {
-    let x = Math.floor(mousePos.x / res);
-    let y = Math.floor(mousePos.y / res);
-    if (inputValues[y] === undefined || inputValues[y][x] === undefined) return;
-    
-    const incrementValue = 0.0025;
-    const radius = 5;
-    
-    for (let i = -radius; i <= radius; i++) {
-        for (let j = -radius; j <= radius; j++) {
-            const distanceSquared = i * i + j * j;
-            const radiusSquared = radius * radius;
-
-            if (distanceSquared <= radiusSquared && zBoostValues[y + i]?.[x + j] !== undefined) {
-                zBoostValues[y + i][x + j] += incrementValue * (1 - distanceSquared / radiusSquared);
-            }
-        }
-    }
-}
-
 function generateNoise() {
     for (let y = 0; y < rows; y++) {
-        inputValues[y] = [];
         for (let x = 0; x <= cols; x++) {
             inputValues[y][x] = ChriscoursesPerlinNoise.noise(x * 0.02, y * 0.02, zOffset + zBoostValues[y]?.[x]) * 100;
             if (inputValues[y][x] < noiseMin) noiseMin = inputValues[y][x];
