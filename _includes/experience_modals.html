@@ -1,5 +1,5 @@
 {% for experience in site.experiences %}
-<div class="portfolio-modal modal fade" id="experienceModal-{{ experience.modal_id }}" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="true">
+<div class="modal fade" id="experienceModal-{{ experience.modal_id }}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
       <div class="lr">
@@ -10,19 +10,18 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="modal-body">
-            <h2 class="company-name">{{ experience.company }}</h2>
-            <h3 class="role-title"><em>{{ experience.role }}</em></h3>
-            <hr class="star-primary">
+            <h2>{{ experience.company }}</h2>
+            <h3><em>{{ experience.role }}</em></h3>
+            <hr class="panda">
             <div class="timeline-date">{{ experience.start_date | date: "%B %Y" }} - {{ experience.end_date | date: "%B %Y" }}</div>
-            <img src="img/experience/{{ experience.img }}" class="img-responsive img-centered experience-modal-img" alt="{{ experience.company }}" style="width: 256px; height: 256px; object-fit: contain;">
+            <img src="img/experience/{{ experience.img }}" class="img-responsive img-centered experience-img" alt="{{ experience.company }}">
             <p>{{ experience.description }}</p>
-            <ul class="list-bullet" style="list-style-type: disc; padding-left: 20px; text-align: left; max-width: 600px; margin: 0 auto;">
+            <ul class="list-bullet">
               {% for bullet in experience.bullets %}
                 <li>{{ bullet }}</li>
               {% endfor %}
             </ul>
-            <br>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            <button type="button" class="btn" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
           </div>
         </div>
       </div>

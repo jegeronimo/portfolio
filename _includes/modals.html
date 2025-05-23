@@ -1,12 +1,10 @@
 <!-- Portfolio Modals -->
 {% for project in site.projects %}
-<div class="portfolio-modal modal fade" id="portfolioModal-{{ project.modal-id }}" tabindex="-1" role="dialog"
-  aria-hidden="true">
+<div class="modal fade" id="portfolioModal-{{ project.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
       <div class="lr">
-        <div class="rl">
-        </div>
+        <div class="rl"></div>
       </div>
     </div>
     <div class="container">
@@ -14,7 +12,7 @@
         <div class="col-lg-8 col-lg-offset-2">
           <div class="modal-body">
             <h2>{{ project.title }}</h2>
-            <hr class="star-primary">
+            <hr class="panda">
             <img src="img/portfolio/{{ project.img }}" class="img-responsive img-centered" alt="{{ project.alt }}">
             {% if project.description %}
             <p>{{ project.description }}</p>
@@ -36,8 +34,7 @@
               </li>
               {% endif %}
             </ul>
-            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
-              Close</button>
+            <button type="button" class="btn" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
           </div>
         </div>
       </div>
