@@ -9,7 +9,7 @@
         </div>
         <div class="intro-text">
           <span class="name">{{ site.title }}</span>
-          <hr class="star-light" />
+          <hr class="panda" />
           <span class="skills">{{ site.skills }}</span>
         </div>
       </div>
@@ -21,6 +21,8 @@
 header {
   position: relative;
   overflow: hidden;
+  background: url('../img/background/soda.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 #topography-canvas {
@@ -31,6 +33,18 @@ header {
   height: 100%;
   z-index: 1;
   pointer-events: none;
+  opacity: 0.7; /* Make it slightly transparent to blend with background */
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Increased overlay darkness from 0.3 to 0.5 */
+  z-index: 1;
 }
 
 header .container {

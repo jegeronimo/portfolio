@@ -36,7 +36,7 @@ h6 {
     font-weight: 700;
 }
 
-hr.star-light,
+hr.panda,
 hr.star-primary {
     margin: 25px auto 30px;
     padding: 0;
@@ -47,24 +47,29 @@ hr.star-primary {
     overflow: visible;
 }
 
-hr.star-light:after,
+hr.panda:after,
 hr.star-primary:after {
-    content: "\f005";
+    content: "";
     display: inline-block;
     position: relative;
-    top: -.8em;
+    top: -1.2em;
     padding: 0 .25em;
-    font-family: FontAwesome;
-    font-size: 2em;
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-hr.star-light {
+hr.panda {
     border-color: #fff;
 }
 
-hr.star-light:after {
-    color: #fff;
-    background-color: #{{ site.color.primary }};
+hr.panda:after {
+    background-image: url('../img/favicon/favicon-white-32x32.png');
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
 }
 
 hr.star-primary {
@@ -72,8 +77,25 @@ hr.star-primary {
 }
 
 hr.star-primary:after {
-    color: #{{ site.color.secondary }};
+    background-image: url('../img/favicon/favicon-32x32.png');
     background-color: #fff;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+/* Override for about section which has white background */
+section#about hr.panda:after {
+    background-image: url('../img/favicon/favicon-32x32.png');
+}
+
+/* Override for portfolio section which has white background */
+section#portfolio hr.star-primary:after {
+    background-image: url('../img/favicon/favicon-32x32.png');
+}
+
+/* Override for contact section which has white background */
+section#contact hr.star-primary:after {
+    background-image: url('../img/favicon/favicon-32x32.png');
 }
 
 .img-centered {
@@ -669,11 +691,11 @@ section#about {
     background: #fff;
 }
 
-section#about hr.star-light {
+section#about hr.panda {
     border-color: #{{ site.color.secondary }};
 }
 
-section#about hr.star-light:after {
+section#about hr.panda:after {
     color: #{{ site.color.secondary }};
     background-color: #fff;
 }
@@ -826,7 +848,7 @@ section#portfolio.section-bg::before {
 
 /* Contact section specific background */
 section#contact.section-bg::before {
-  background: url('img/background/soda.jpg') center center/cover no-repeat;
+  background: url('img/background/ds100-lec.png') center center/cover no-repeat;
   opacity: 0.15;
 }
 
