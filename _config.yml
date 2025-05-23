@@ -54,14 +54,6 @@ credits: 'This website was built off of "Freelancer", a free to use, open source
 markdown: kramdown
 permalink: pretty
 
-#for projects
-defaults:
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      permalink: ""
-
 collections:
   projects:
     output: true
