@@ -36,7 +36,7 @@ footer:
 quote: |
   "...an object in motion
   remains in motion..."
-  - Newton’s First Law of Motion
+  - Newton's First Law of Motion
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
@@ -54,10 +54,18 @@ credits: 'This website was built off of "Freelancer", a free to use, open source
 markdown: kramdown
 permalink: pretty
 
-#for posts
+#for projects
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: "projects"
     values:
       permalink: ""
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  experiences:
+    output: true
+    permalink: /experiences/:name/

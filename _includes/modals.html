@@ -1,6 +1,6 @@
 <!-- Portfolio Modals -->
-{% for post in site.posts %}
-<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog"
+{% for project in site.projects %}
+<div class="portfolio-modal modal fade" id="portfolioModal-{{ project.modal-id }}" tabindex="-1" role="dialog"
   aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
@@ -13,26 +13,26 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="modal-body">
-            <h2>{{ post.title }}</h2>
+            <h2>{{ project.title }}</h2>
             <hr class="star-primary">
-            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-            {% if post.description %}
-            <p>{{ post.description }}</p>
+            <img src="img/portfolio/{{ project.img }}" class="img-responsive img-centered" alt="{{ project.alt }}">
+            {% if project.description %}
+            <p>{{ project.description }}</p>
             {% endif %}
             <ul class="list-inline item-details">
-              {% if post.client %}
+              {% if project.client %}
               <li>Client:
-                <strong>{{ post.client }}</strong>
+                <strong>{{ project.client }}</strong>
               </li>
               {% endif %}
-              {% if post.project-date %}
+              {% if project.project-date %}
               <li>Date:
-                <strong>{{ post.project-date }}</strong>
+                <strong>{{ project.project-date }}</strong>
               </li>
               {% endif %}
-              {% if post.category %}
+              {% if project.category %}
               <li>Service:
-                <strong>{{ post.category }}</strong>
+                <strong>{{ project.category }}</strong>
               </li>
               {% endif %}
             </ul>

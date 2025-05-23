@@ -952,3 +952,15 @@ section#contact hr.star-primary:after {
     width: 100%;
   }
 }
+
+/* Make experience modal text dark on white background */
+.portfolio-modal .modal-content, 
+.portfolio-modal .modal-content h2,
+.portfolio-modal .modal-content h3,
+.portfolio-modal .modal-content h4,
+.portfolio-modal .modal-content p,
+.portfolio-modal .modal-content ul,
+.portfolio-modal .modal-content li,
+.portfolio-modal .modal-content .timeline-date {
+  color: #222 !important;
+}
