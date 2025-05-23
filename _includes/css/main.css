@@ -103,7 +103,7 @@ section#contact hr.panda:after {
 header {
     text-align: center;
     color: #fff;
-    background: #{{ site.color.primary }};
+    background: #{{ site.color.secondary }};
     position: relative;
     overflow: hidden;
     padding: 100px 0 0px 0;
@@ -185,6 +185,40 @@ header .intro-text .skills {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-transparent {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.navbar-transparent .navbar-brand,
+.navbar-transparent .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-transparent .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-transparent.navbar-top {
+    background-color: transparent;
+}
+
+.navbar-transparent:not(.navbar-top) {
+    background-color: #{{ site.color.secondary }};
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-transparent:not(.navbar-top) .navbar-brand,
+.navbar-transparent:not(.navbar-top) .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-transparent:not(.navbar-top) .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .navbar a:focus {

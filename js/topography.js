@@ -6,7 +6,7 @@ const thresholdIncrement = 5;
 const thickLineThresholdMultiple = 3;
 const res = 10;
 const baseZOffset = 0.00035;
-const lineColor = '#{{ site.color.secondary }}20'; // Using secondary color with 12% opacity
+const lineColor = '#6495ed';
 
 let canvas;
 let ctx;
@@ -115,7 +115,7 @@ function generateNoise() {
 function renderAtThreshold() {
     ctx.beginPath();
     ctx.strokeStyle = lineColor;
-    ctx.lineWidth = currentThreshold % (thresholdIncrement * thickLineThresholdMultiple) === 0 ? 2 : 1;
+    ctx.lineWidth = currentThreshold % (thresholdIncrement * thickLineThresholdMultiple) === 0 ? 3 : 1.5;
 
     for (let y = 0; y < inputValues.length - 1; y++) {
         for (let x = 0; x < inputValues[y].length - 1; x++) {
