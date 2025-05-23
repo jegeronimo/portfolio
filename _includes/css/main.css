@@ -159,25 +159,11 @@ header .intro-text .skills {
 
 @media(min-width:768px) {
     .navbar-fixed-top {
-        padding: 25px 0;
-        -webkit-transition: padding .3s;
-        -moz-transition: padding .3s;
-        transition: padding .3s;
+        padding: 15px 0;
     }
 
     .navbar-fixed-top .navbar-brand {
         font-size: 2em;
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
-    }
-
-    .navbar-fixed-top.navbar-shrink {
-        padding: 10px 0;
-    }
-
-    .navbar-fixed-top.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
     }
 }
 
@@ -197,6 +183,12 @@ header .intro-text .skills {
 .navbar-transparent .navbar-brand,
 .navbar-transparent .navbar-nav > li > a {
     color: #fff;
+    transition: color 0.3s ease;
+}
+
+.navbar-transparent .navbar-brand:hover,
+.navbar-transparent .navbar-nav > li > a:hover {
+    color: #{{ site.color.primary }};
 }
 
 .navbar-transparent .navbar-toggle .icon-bar {
@@ -215,6 +207,12 @@ header .intro-text .skills {
 .navbar-transparent:not(.navbar-top) .navbar-brand,
 .navbar-transparent:not(.navbar-top) .navbar-nav > li > a {
     color: #fff;
+    transition: color 0.3s ease;
+}
+
+.navbar-transparent:not(.navbar-top) .navbar-brand:hover,
+.navbar-transparent:not(.navbar-top) .navbar-nav > li > a:hover {
+    color: #{{ site.color.primary }};
 }
 
 .navbar-transparent:not(.navbar-top) .navbar-toggle .icon-bar {
