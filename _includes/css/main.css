@@ -621,16 +621,24 @@ footer .footer-below {
 
 @media (max-width: 900px) {
     .timeline-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .timeline-dot {
-        margin: 0 0 24px 0;
-        left: 0;
+        display: block !important;
+        text-align: center;
     }
     .timeline-content {
-        max-width: 100%;
-        width: 100%;
+        display: none !important;
+    }
+    .timeline-dot {
+        margin: 0 auto 32px auto !important;
+        display: block !important;
+        float: none !important;
+    }
+    /* Hide experience items beyond the first 4 by default */
+    .timeline-item:nth-child(n+5) {
+        display: none !important;
+    }
+    /* Show all items when expanded */
+    .timeline-expanded .timeline-item {
+        display: block !important;
     }
 }
 
@@ -961,6 +969,37 @@ section#contact hr.star-primary:after {
 .portfolio-modal .modal-content p,
 .portfolio-modal .modal-content ul,
 .portfolio-modal .modal-content li,
+.portfolio-modal .modal-content .timeline-date {
+  color: #222 !important;
+}
+
+/* Experience Section Button Styling */
+section#experience .btn-outline {
+    border: none;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 15px 30px;
+    margin: 20px auto;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+section#experience .btn-outline:hover,
+section#experience .btn-outline:focus,
+section#experience .btn-outline:active,
+section#experience .btn-outline.active {
+    border: none;
+    color: #{{ site.color.primary }};
+    background: #fff;
+}
+
+section#experience .btn-outline i {
+    font-size: 1.1em;
+    margin-right: 8px;
+}
+
 .portfolio-modal .modal-content .timeline-date {
   color: #222 !important;
 }

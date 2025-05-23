@@ -12,7 +12,7 @@
         <div class="timeline">
           {% assign sorted_experiences = site.experiences | sort: 'role' | sort: 'end_date' | reverse | sort: 'start_date' | reverse %}
           {% for experience in sorted_experiences %}
-          <div class="timeline-item">
+          <div class="timeline-item {% if forloop.index > 4 %}experience-hidden{% endif %}">
             <div class="timeline-dot">
               <a href="#experienceModal-{{ experience.modal_id }}" class="timeline-link" data-toggle="modal">
                 <div class="timeline-hover">
@@ -30,8 +30,81 @@
           </div>
           {% endfor %}
         </div>
+        {% if sorted_experiences.size > 4 %}
+        <div class="text-center mt-4">
+          <button id="toggleExperiences" class="btn btn-lg btn-outline">
+            <i class="fa fa-plus"></i> Show More
+          </button>
+        </div>
+        {% endif %}
       </div>
     </div>
     {% include experience_modals.html %}
   </div>
-</section> 
+</section>
+
+<style>
+.experience-hidden {
+  display: none;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButton = document.getElementById('toggleExperiences');
+  if (!toggleButton) return;
+
+  const timeline = document.querySelector('.timeline');
+  const experiences = document.querySelectorAll('.timeline-item');
+  const experienceSection = document.getElementById('experience');
+  let isExpanded = false;
+
+  function handleToggle() {
+    isExpanded = !isExpanded;
+    
+    if (window.innerWidth <= 900) {
+      // Mobile view: toggle the timeline-expanded class
+      timeline.classList.toggle('timeline-expanded');
+    } else {
+      // Desktop view: toggle individual items
+      experiences.forEach((exp, index) => {
+        if (index >= 4) {
+          exp.classList.toggle('experience-hidden');
+        }
+      });
+    }
+
+    if (isExpanded) {
+      toggleButton.innerHTML = '<i class="fa fa-minus"></i> Show Less';
+    } else {
+      toggleButton.innerHTML = '<i class="fa fa-plus"></i> Show More';
+      // Only scroll when collapsing
+      const experienceSectionBottom = experienceSection.getBoundingClientRect().bottom + window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const scrollPosition = experienceSectionBottom - viewportHeight;
+      window.scrollTo({
+        top: scrollPosition
+      });
+    }
+  }
+
+  toggleButton.addEventListener('click', handleToggle);
+
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      // Reset state on resize
+      isExpanded = false;
+      timeline.classList.remove('timeline-expanded');
+      experiences.forEach((exp, index) => {
+        if (index >= 4) {
+          exp.classList.add('experience-hidden');
+        }
+      });
+      toggleButton.innerHTML = '<i class="fa fa-plus"></i> Show More';
+    }, 250);
+  });
+});
+</script> 
