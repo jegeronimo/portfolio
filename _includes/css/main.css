@@ -114,6 +114,8 @@ header .container {
     z-index: 2;
     padding-top: 25px;
     padding-bottom: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 header img {
@@ -121,25 +123,85 @@ header img {
     margin: 0 auto 20px;
     border-radius: 50%;
     object-fit: cover;
+    width: 300px;
+    height: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 header img:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-header .intro-text .name {
-    display: block;
+header img.flipped {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: scaleX(-1);
+}
+
+.header-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-img-container {
+    flex-shrink: 0;
+    margin: 0;
+    width: 300px;
+}
+
+.intro-text {
+    text-align: left;
+    flex-grow: 1;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.intro-text .name {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 1.2em;
     font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4),
+                 3px 3px 6px rgba(0, 0, 0, 0.2),
+                 -1px -1px 3px rgba(0, 0, 0, 0.3);
 }
 
-header .intro-text .skills {
+.intro-text .skills {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
     font-size: 1.25em;
     font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.35),
+                 2px 2px 4px rgba(0, 0, 0, 0.2),
+                 -1px -1px 2px rgba(0, 0, 0, 0.25);
+}
+
+@media(min-width:768px) {
+  .intro-text {
+    min-height: 300px;
+  }
+  
+  .intro-text .name {
+    min-height: 100px;
+    font-size: 3.5em;
+  }
+  
+  .intro-text .skills {
+    min-height: 60px;
+    font-size: 1.75em;
+  }
 }
 
 @media(min-width:768px) {
@@ -884,8 +946,8 @@ section#contact h2 {
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.6;
-    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 1;
 }
 
 @media (max-width: 1000px) {
@@ -1081,4 +1143,50 @@ footer .footer-below {
 
 .scroll-top .btn:focus {
     outline: 0;
+}
+
+/* Header Styles */
+.profile-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.profile-img-container:hover {
+    background: none;
+}
+
+.typed-cursor {
+    opacity: 1;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media(max-width: 768px) {
+    .header-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .intro-text {
+        text-align: center;
+        align-items: center;
+    }
+
+    .intro-text .name {
+        font-size: 2.5em;
+        min-height: 80px;
+    }
+
+    .intro-text .skills {
+        font-size: 1.5em;
+        min-height: 50px;
+    }
 }

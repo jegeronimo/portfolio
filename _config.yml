@@ -4,7 +4,7 @@ email: jegeronimo@berkeley.edu
 url: https://github.com/jegeronimo/jegeronimo.github.io
 description: "I'm James, an undergraduate at UC Berkeley studying Computer Science and Data Science. I'm passionate about using technology to make data driven decisions."
 keywords: "data science, computer science, machine learning, artificial intelligence, education, biotechnology, business, entrepreneurship"
-skills: "Data Scientist · Educator · Student"
+skills: "Data Scientist, Full-Stack Engineer, Educator, Student, Hooper"
 meta_author: James Geronimo
 
 # Google webmaster tools
@@ -45,7 +45,7 @@ social:
   - title: github
     url: https://github.com/jegeronimo
   - title: instagram
-    url: https://www.instagram.com/je.geronimo/
+    url: https://www.instagram.com/jam.gero/
 
 # Credits content
 credits: 'This website was built off of "Freelancer", a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com" target="_blank">Start Bootstrap</a>.'
