@@ -7,11 +7,10 @@ This repository contains my personal portfolio website built using Jekyll and th
 This website is built using:
 - [Jekyll](https://jekyllrb.com/) - Static site generator
 - [Freelancer Bootstrap Theme](http://startbootstrap.com/template-overviews/freelancer/) - Base theme
-- [Formspree](https://formspree.io/) - Contact form handling
 
 ## Contact
 
-For any questions or inquiries, please use the contact form on the website or reach out through the provided contact information.
+For any questions or inquiries, please reach out through the provided contact information.
 
 ## License
 
