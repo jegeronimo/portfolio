@@ -6,7 +6,7 @@ alt: "Amgen"
 start_date: "2025-06-01"
 end_date: "2025-08-31"
 company: "Amgen"
-description: "Creating large-scale data science projects under Amgen's Global Commercial Operations team."
+description: "Creating a scalable GenAI tool for commercial decision-making through the Decision Sciences team of the CD&A department under the GCO unit."
 bullets:
   - "To be updated!"
 --- 

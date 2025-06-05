@@ -13,7 +13,7 @@
             <h2>{{ experience.company }}</h2>
             <h3><em>{{ experience.role }}</em></h3>
             <hr class="panda">
-            <div class="timeline-date">{{ experience.start_date | date: "%B %Y" }} - {{ experience.end_date | date: "%B %Y" }}</div>
+            <div class="timeline-date">{{ experience.start_date | date: "%B %Y" }} - {% if experience.end_date %}{% assign end_date_ts = experience.end_date | date: '%s' %}{% assign now_ts = 'now' | date: '%s' %}{% if end_date_ts > now_ts %}Present{% else %}{{ experience.end_date | date: "%B %Y" }}{% endif %}{% else %}Present{% endif %}</div>
             <img src="img/experience/{{ experience.img }}" class="img-responsive img-centered experience-img" alt="{{ experience.company }}">
             <p>{{ experience.description }}</p>
             <ul class="list-bullet">

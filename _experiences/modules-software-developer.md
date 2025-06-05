@@ -4,7 +4,7 @@ modal_id: "4"
 img: "modules.png"
 alt: "UC Berkeley Data Science Modules"
 start_date: "2025-01-01"
-end_date: "2025-05-31"
+end_date: "2025-05-29"
 company: "UC Berkeley Data Science Modules"
 description: "Built educational data science modules through UC Berkeley's Data Science Modules Team for El Camino College courses of varying domains."
 bullets:

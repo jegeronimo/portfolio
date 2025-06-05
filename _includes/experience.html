@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="timeline">
-          {% assign sorted_experiences = site.experiences | sort: 'role' | sort: 'end_date' | reverse | sort: 'start_date' | reverse %}
+          {% assign sorted_experiences = site.experiences | sort: 'end_date' | reverse %}
           {% for experience in sorted_experiences %}
           <div class="timeline-item {% if forloop.index > 4 %}experience-hidden{% endif %}">
             <div class="timeline-dot">
@@ -22,7 +22,7 @@
               </a>
             </div>
             <div class="timeline-content">
-              <div class="timeline-date">{{ experience.start_date | date: "%B %Y" }} - {{ experience.end_date | date: "%B %Y" }}</div>
+              <div class="timeline-date">{{ experience.start_date | date: "%B %Y" }} - {% if experience.end_date %}{% assign end_date_ts = experience.end_date | date: '%s' %}{% assign now_ts = 'now' | date: '%s' %}{% if end_date_ts > now_ts %}Present{% else %}{{ experience.end_date | date: "%B %Y" }}{% endif %}{% else %}Present{% endif %}</div>
               <h3 class="company-name">{{ experience.company }}</h3>
               <h4 class="role-title"><em>{{ experience.role }}</em></h4>
               <p>{{ experience.description }}</p>
